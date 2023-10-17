@@ -1,0 +1,9 @@
+frontend my_frontend
+        bind 127.0.0.1:81
+        default_backend my_backend
+
+backend my_backend
+        stick-table type ip size 200k expire 30m
+        stick on src
+        server server1 127.0.0.1:80
+        server server2 127.0.0.1:8080
